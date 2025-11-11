@@ -13,16 +13,13 @@ import techBackground from "@/assets/tech-bg.jpg";
 import benefitsBackground from "@/assets/benefits-bg.jpg";
 import contactBackground from "@/assets/contact-bg.jpg";
 import logoSeica from "@/assets/logo-seica.jpg";
-
 const Index = () => {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     toast.success("Mensaje enviado exitosamente. Nos pondremos en contacto pronto.");
     (e.target as HTMLFormElement).reset();
   };
-
-  return (
-    <div className="min-h-screen">
+  return <div className="min-h-screen">
       <Navigation />
 
       {/* Hero Section */}
@@ -71,41 +68,29 @@ const Index = () => {
         <div className="space-y-12">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Nuestros Servicios</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                icon: Camera,
-                title: "CCTV",
-                description:
-                  "Instalación y mantenimiento de Circuitos Cerrados de Televisión con cámaras IP y grabadores NVR/DVR.",
-              },
-              {
-                icon: Monitor,
-                title: "Monitoreo Remoto",
-                description: "Acceso en tiempo real vía protocolo RTSP desde cualquier dispositivo conectado.",
-              },
-              {
-                icon: Shield,
-                title: "Analítica de Video",
-                description:
-                  "Detección de movimiento, reconocimiento facial y conteo de personas con inteligencia artificial.",
-              },
-              {
-                icon: Zap,
-                title: "Sistemas Eléctricos",
-                description: "Diseño e instalación de redes eléctricas seguras y eficientes para hogares y empresas.",
-              },
-            ].map((service, index) => (
-              <Card
-                key={index}
-                className="bg-card/80 backdrop-blur-sm border-primary/20 hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-card)]"
-              >
+            {[{
+            icon: Camera,
+            title: "CCTV",
+            description: "Instalación y mantenimiento de Circuitos Cerrados de Televisión con cámaras IP y grabadores NVR/DVR."
+          }, {
+            icon: Monitor,
+            title: "Monitoreo Remoto",
+            description: "Acceso en tiempo real vía protocolo RTSP desde cualquier dispositivo conectado."
+          }, {
+            icon: Shield,
+            title: "Analítica de Video",
+            description: "Detección de movimiento, reconocimiento facial y conteo de personas con inteligencia artificial."
+          }, {
+            icon: Zap,
+            title: "Sistemas Eléctricos",
+            description: "Diseño e instalación de redes eléctricas seguras y eficientes para hogares y empresas."
+          }].map((service, index) => <Card key={index} className="bg-card/80 backdrop-blur-sm border-primary/20 hover:border-primary/50 transition-all duration-300 hover:scale-105 hover:shadow-[var(--shadow-card)]">
                 <CardContent className="p-6 space-y-4">
                   <service.icon className="w-12 h-12 text-primary" />
                   <h3 className="text-xl font-bold">{service.title}</h3>
                   <p className="text-muted-foreground">{service.description}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </Section>
@@ -115,17 +100,10 @@ const Index = () => {
         <div className="max-w-4xl mx-auto space-y-8">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Tecnología de Vanguardia</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {[
-              "Cámaras IP de alta resolución",
-              "Grabadores NVR/DVR inteligentes",
-              "Analítica de video con IA",
-              "Integración con dispositivos móviles",
-            ].map((tech, index) => (
-              <div key={index} className="flex items-center gap-4 p-4 bg-card/50 rounded-lg backdrop-blur-sm">
+            {["Cámaras IP de alta resolución", "Grabadores NVR/DVR inteligentes", "Analítica de video con IA", "Integración con dispositivos móviles"].map((tech, index) => <div key={index} className="flex items-center gap-4 p-4 bg-card/50 rounded-lg backdrop-blur-sm">
                 <CheckCircle2 className="w-8 h-8 text-primary flex-shrink-0" />
                 <span className="text-lg">{tech}</span>
-              </div>
-            ))}
+              </div>)}
           </div>
           <p className="text-center text-lg text-muted-foreground mt-8">
             Utilizamos equipos de última generación para garantizar monitoreo confiable, seguro y adaptable a cualquier
@@ -139,23 +117,11 @@ const Index = () => {
         <div className="space-y-12">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">¿Por qué confiar en SEICA?</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              "+10 años de experiencia",
-              "Atención personalizada",
-              "Soporte técnico especializado",
-              "Soluciones a medida",
-              "Infraestructura segura y confiable",
-              "Tecnología de última generación",
-            ].map((benefit, index) => (
-              <Card
-                key={index}
-                className="bg-gradient-to-br from-primary/20 to-accent/10 backdrop-blur-sm border-primary/30 hover:scale-105 transition-transform duration-300"
-              >
+            {["+10 años de experiencia", "Atención personalizada", "Soporte técnico especializado", "Soluciones a medida", "Infraestructura segura y confiable", "Tecnología de última generación"].map((benefit, index) => <Card key={index} className="bg-gradient-to-br from-primary/20 to-accent/10 backdrop-blur-sm border-primary/30 hover:scale-105 transition-transform duration-300">
                 <CardContent className="p-8 text-center">
                   <p className="text-xl font-semibold">{benefit}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </Section>
@@ -165,25 +131,19 @@ const Index = () => {
         <div className="max-w-4xl mx-auto space-y-12">
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-12">Lo que dicen nuestros clientes</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {[
-              {
-                quote:
-                  "SEICA instaló nuestro sistema de videovigilancia con una precisión impecable. ¡Recomendados!",
-                author: "Carlos M., Gerente de Seguridad",
-              },
-              {
-                quote: "La atención técnica fue rápida y eficiente. Muy satisfechos con el servicio.",
-                author: "Ana R., Propietaria de comercio",
-              },
-            ].map((testimonial, index) => (
-              <Card key={index} className="bg-card/80 backdrop-blur-sm">
+            {[{
+            quote: "SEICA instaló nuestro sistema de videovigilancia con una precisión impecable. ¡Recomendados!",
+            author: "Carlos M., Gerente de Seguridad"
+          }, {
+            quote: "La atención técnica fue rápida y eficiente. Muy satisfechos con el servicio.",
+            author: "Ana R., Propietaria de comercio"
+          }].map((testimonial, index) => <Card key={index} className="bg-card/80 backdrop-blur-sm">
                 <CardContent className="p-8">
                   <Users className="w-12 h-12 text-primary mb-4" />
                   <blockquote className="text-lg italic mb-4">"{testimonial.quote}"</blockquote>
                   <p className="text-muted-foreground">— {testimonial.author}</p>
                 </CardContent>
-              </Card>
-            ))}
+              </Card>)}
           </div>
         </div>
       </Section>
@@ -200,13 +160,7 @@ const Index = () => {
                     <Input type="text" name="nombre" placeholder="Nombre" required className="bg-background/50" />
                   </div>
                   <div>
-                    <Input
-                      type="email"
-                      name="correo"
-                      placeholder="Correo electrónico"
-                      required
-                      className="bg-background/50"
-                    />
+                    <Input type="email" name="correo" placeholder="Correo electrónico" required className="bg-background/50" />
                   </div>
                   <div>
                     <Input type="tel" name="telefono" placeholder="Teléfono" className="bg-background/50" />
@@ -249,15 +203,9 @@ const Index = () => {
               </Card>
 
               <div className="rounded-lg overflow-hidden shadow-lg h-64">
-                <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125722.85714285714!2d-67.45!3d10.186666666666667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2af7e1dc5a5a5f%3A0x1234567890abcdef!2sCagua%2C%20Aragua%2C%20Venezuela!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  allowFullScreen
-                  loading="lazy"
-                  title="Ubicación SEICA"
-                />
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d125722.85714285714!2d-67.45!3d10.186666666666667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8c2af7e1dc5a5a5f%3A0x1234567890abcdef!2sCagua%2C%20Aragua%2C%20Venezuela!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus" width="100%" height="100%" style={{
+                border: 0
+              }} allowFullScreen loading="lazy" title="Ubicación SEICA" />
               </div>
             </div>
           </div>
@@ -269,32 +217,20 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
             <div className="flex flex-col items-center md:items-start">
-              <img src={logoSeica} alt="Logo SEICA" className="h-16 w-16 object-contain mb-4" />
+              
               <p className="text-muted-foreground">SEICA RIF. J-41091304-5</p>
               <p className="text-muted-foreground">Cagua, Estado Aragua, Venezuela</p>
             </div>
             <div className="flex flex-col items-center">
               <h3 className="font-semibold text-lg mb-4">Síguenos</h3>
               <div className="flex gap-4">
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                  aria-label="Facebook"
-                >
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300" aria-label="Facebook">
                   Facebook
                 </a>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                  aria-label="Instagram"
-                >
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300" aria-label="Instagram">
                   Instagram
                 </a>
-                <a
-                  href="#"
-                  className="text-muted-foreground hover:text-primary transition-colors duration-300"
-                  aria-label="LinkedIn"
-                >
+                <a href="#" className="text-muted-foreground hover:text-primary transition-colors duration-300" aria-label="LinkedIn">
                   LinkedIn
                 </a>
               </div>
@@ -306,8 +242,6 @@ const Index = () => {
           </div>
         </div>
       </footer>
-    </div>
-  );
+    </div>;
 };
-
 export default Index;
