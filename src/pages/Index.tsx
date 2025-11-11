@@ -12,12 +12,45 @@ import servicesBackground from "@/assets/services-bg.jpg";
 import techBackground from "@/assets/tech-bg.jpg";
 import benefitsBackground from "@/assets/benefits-bg.jpg";
 import contactBackground from "@/assets/contact-bg.jpg";
-import logoSeica from "@/assets/logo-seica.jpg";
+import logoSeica from "@/assets/logo-seica.png";
+import emailjs from '@emailjs/browser';
 const Index = () => {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    toast.success("Mensaje enviado exitosamente. Nos pondremos en contacto pronto.");
-    (e.target as HTMLFormElement).reset();
+    
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    
+    // Preparar el email para enviar a a4uca4d@gmail.com
+    const emailData = {
+      to_email: 'a4uca4d@gmail.com',
+      from_name: formData.get('nombre'),
+      from_email: formData.get('correo'),
+      phone: formData.get('telefono'),
+      message: formData.get('mensaje'),
+    };
+
+    try {
+      // Enviar email usando EmailJS
+      // Nota: Debes configurar tu cuenta en https://www.emailjs.com/
+      // y reemplazar estos valores con tus IDs reales:
+      // - SERVICE_ID: ID del servicio de email
+      // - TEMPLATE_ID: ID de la plantilla de email
+      // - PUBLIC_KEY: Tu clave pública de EmailJS
+      
+      await emailjs.send(
+        'YOUR_SERVICE_ID', // Reemplazar con tu Service ID
+        'YOUR_TEMPLATE_ID', // Reemplazar con tu Template ID
+        emailData,
+        'YOUR_PUBLIC_KEY' // Reemplazar con tu Public Key
+      );
+      
+      toast.success("Mensaje enviado exitosamente. Nos pondremos en contacto pronto.");
+      form.reset();
+    } catch (error) {
+      console.error('Error al enviar el email:', error);
+      toast.error("Hubo un error al enviar el mensaje. Por favor intenta nuevamente.");
+    }
   };
   return <div className="min-h-screen">
       <Navigation />
@@ -189,7 +222,8 @@ const Index = () => {
                     <Phone className="w-6 h-6 text-primary flex-shrink-0 mt-1" />
                     <div>
                       <h3 className="font-semibold mb-1">Teléfono</h3>
-                      <p className="text-muted-foreground">+58 XXX-XXX-XXXX</p>
+                      <p className="text-muted-foreground">(+58) 424 243.70.97</p>
+                      <p className="text-muted-foreground">(+58) 414 467.70.46</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -216,8 +250,8 @@ const Index = () => {
       <footer className="bg-card/50 backdrop-blur-md border-t border-border py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
-            <div className="flex flex-col items-center md:items-start">
-              
+            <div className="flex flex-col items-center md:items-start gap-4">
+              <img src={logoSeica} alt="SEICA Logo" className="h-16 w-auto" />
               <p className="text-muted-foreground">SEICA RIF. J-41091304-5</p>
               <p className="text-muted-foreground">Cagua, Estado Aragua, Venezuela</p>
             </div>
